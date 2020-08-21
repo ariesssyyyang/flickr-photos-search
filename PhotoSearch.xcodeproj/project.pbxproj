@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		7F976BB124F033E600AC923E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F976BB024F033E600AC923E /* AppDelegate.swift */; };
-		7F976BB324F033E600AC923E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F976BB224F033E600AC923E /* ViewController.swift */; };
 		7F976BB824F033EA00AC923E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F976BB724F033EA00AC923E /* Assets.xcassets */; };
 		7F976BBB24F033EA00AC923E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F976BB924F033EA00AC923E /* LaunchScreen.storyboard */; };
 		7F976BC624F033EB00AC923E /* PhotoSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F976BC524F033EB00AC923E /* PhotoSearchTests.swift */; };
+		7FDFF95024F039200086A21C /* InputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFF94F24F039200086A21C /* InputController.swift */; };
+		7FDFF95424F03CA50086A21C /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFF95324F03CA50086A21C /* TextField.swift */; };
+		7FDFF95724F03DCF0086A21C /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFF95624F03DCF0086A21C /* UIColor+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,13 +29,15 @@
 /* Begin PBXFileReference section */
 		7F976BAD24F033E600AC923E /* PhotoSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F976BB024F033E600AC923E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7F976BB224F033E600AC923E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7F976BB724F033EA00AC923E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F976BBA24F033EA00AC923E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F976BBC24F033EA00AC923E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F976BC124F033EB00AC923E /* PhotoSearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoSearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F976BC524F033EB00AC923E /* PhotoSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearchTests.swift; sourceTree = "<group>"; };
 		7F976BC724F033EB00AC923E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FDFF94F24F039200086A21C /* InputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputController.swift; sourceTree = "<group>"; };
+		7FDFF95324F03CA50086A21C /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		7FDFF95624F03DCF0086A21C /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +79,10 @@
 		7F976BAF24F033E600AC923E /* PhotoSearch */ = {
 			isa = PBXGroup;
 			children = (
+				7FDFF95524F03DBF0086A21C /* Extensions */,
+				7FDFF95224F03C9A0086A21C /* Views */,
+				7FDFF95124F039290086A21C /* Controllers */,
 				7F976BB024F033E600AC923E /* AppDelegate.swift */,
-				7F976BB224F033E600AC923E /* ViewController.swift */,
 				7F976BB724F033EA00AC923E /* Assets.xcassets */,
 				7F976BB924F033EA00AC923E /* LaunchScreen.storyboard */,
 				7F976BBC24F033EA00AC923E /* Info.plist */,
@@ -91,6 +97,30 @@
 				7F976BC724F033EB00AC923E /* Info.plist */,
 			);
 			path = PhotoSearchTests;
+			sourceTree = "<group>";
+		};
+		7FDFF95124F039290086A21C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7FDFF94F24F039200086A21C /* InputController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		7FDFF95224F03C9A0086A21C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7FDFF95324F03CA50086A21C /* TextField.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7FDFF95524F03DBF0086A21C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7FDFF95624F03DCF0086A21C /* UIColor+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,7 +223,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F976BB324F033E600AC923E /* ViewController.swift in Sources */,
+				7FDFF95424F03CA50086A21C /* TextField.swift in Sources */,
+				7FDFF95724F03DCF0086A21C /* UIColor+Ext.swift in Sources */,
+				7FDFF95024F039200086A21C /* InputController.swift in Sources */,
 				7F976BB124F033E600AC923E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
