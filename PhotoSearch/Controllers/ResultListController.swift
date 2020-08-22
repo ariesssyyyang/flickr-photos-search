@@ -12,7 +12,7 @@ import RxSwift
 
 class ResultListController: UIViewController {
 
-    private let viewModel: ResultListViewModel
+    private let viewModel: PhotoListViewModel
 
     private let bag = DisposeBag()
 
@@ -31,7 +31,7 @@ class ResultListController: UIViewController {
 
     private let refreshControl = UIRefreshControl()
 
-    init(viewModel: ResultListViewModel) {
+    init(viewModel: PhotoListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -112,7 +112,7 @@ private extension ResultListController {
     }
 
     func setupView() {
-        title = "搜尋結果 " + viewModel.keyword
+        title = viewModel.titleText
         view.backgroundColor = .white
         view.addSubview(collectionView)
         let safeArea = view.safeAreaLayoutGuide

@@ -67,7 +67,7 @@ extension TabBarController {
         case .search:
             controller = InputController()
         case .favorites:
-            controller = FavoriteListController()
+            controller = ResultListController(viewModel: FavoriteListViewModel())
         }
         let tabBar = UITabBarItem(tabBarSystemItem: type.system, tag: type.tag)
         controller.tabBarItem = tabBar

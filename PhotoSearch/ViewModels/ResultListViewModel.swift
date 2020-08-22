@@ -9,13 +9,14 @@
 import Foundation
 import RxSwift
 
-class ResultListViewModel {
+class ResultListViewModel: PhotoListViewModel {
 
-    let keyword: String
+    private let keyword: String
     private let perPage: String
     private var page: Int
     private var results: [Photo]
 
+    var titleText: String? { "搜尋結果 " + keyword }
     var numberOfSection: Int { 2 /* data + loading */ }
 
     init(keyword: String, perPage: String) {
@@ -44,7 +45,7 @@ class ResultListViewModel {
         section == 0 ? PhotoCell.reuseId : LoadingCell.reuseId
     }
 
-    func cellViewModel(at indexPath: IndexPath) -> ViewModel? {
+    func cellViewModel(at indexPath: IndexPath) -> PhotoCellViewModel? {
         guard indexPath.section == 0, indexPath.item < results.count else { return nil }
         return PhotoCellViewModel(model: results[indexPath.item])
     }
