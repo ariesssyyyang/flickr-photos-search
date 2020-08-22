@@ -14,14 +14,16 @@ class ResultListViewModel: PhotoListViewModel {
     private let keyword: String
     private let perPage: String
     private var page: Int
+    private var totalPages: Int
     private var results: [Photo]
 
     var titleText: String? { "搜尋結果 " + keyword }
-    var numberOfSection: Int { 2 /* data + loading */ }
+    private(set) var numberOfSection: Int = 2 /* data + loading */
 
     init(keyword: String, perPage: String) {
         self.keyword = keyword
         self.perPage = perPage
+        self.totalPages = 0
         self.results = []
         self.page = 0
     }
@@ -29,6 +31,7 @@ class ResultListViewModel: PhotoListViewModel {
     func getResult() -> Observable<Void> {
         results = []
         page = 0
+        numberOfSection = 2
         return requestData()
     }
 
@@ -54,7 +57,7 @@ class ResultListViewModel: PhotoListViewModel {
 private extension ResultListViewModel {
 
     func shouldLoadMore(at index: Int) -> Bool {
-        index == results.count - 1
+        index == results.count - 1 && page < totalPages
     }
 
     func requestData() -> Observable<Void> {
@@ -67,5 +70,7 @@ private extension ResultListViewModel {
     func configure(_ model: PhotoList) {
         self.results.append(contentsOf: model.photos)
         self.page = model.page
+        self.totalPages = model.pages
+        if page == totalPages { numberOfSection = 1 }
     }
 }
