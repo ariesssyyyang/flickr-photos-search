@@ -9,4 +9,5 @@
 import UIKit
 
 let MARGIN: CGFloat = 8
+let LINE_SPACING: CGFloat = 16
 let API_KEY: String = "ba6d0faf8e6fb8bae3e3fb18fea52976"

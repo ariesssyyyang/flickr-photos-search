@@ -19,7 +19,7 @@ class ResultListController: UIViewController {
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = MARGIN
-        layout.minimumLineSpacing = MARGIN
+        layout.minimumLineSpacing = LINE_SPACING
         layout.sectionInset = UIEdgeInsets(
             top: MARGIN, left: MARGIN, bottom: MARGIN, right: MARGIN
         )
@@ -113,6 +113,7 @@ private extension ResultListController {
 
     func setupView() {
         title = "搜尋結果 " + viewModel.keyword
+        view.backgroundColor = .white
         view.addSubview(collectionView)
         let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([

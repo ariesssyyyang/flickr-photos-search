@@ -14,13 +14,14 @@ class InputController: UIViewController {
 
     private let viewModel = InputViewModel()
 
-    private let margin: CGFloat = 8
-
     private let bag = DisposeBag()
 
     private let keywordTextField: TextField = {
         let textField = TextField()
-        textField.placeholder = "欲搜尋內容"
+        textField.attributedPlaceholder = NSAttributedString(
+            string: "欲搜尋內容", attributes: [.foregroundColor: UIColor.textGray]
+        )
+        textField.textColor = .textBlack
         textField.font = UIFont.systemFont(ofSize: 14)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -28,7 +29,10 @@ class InputController: UIViewController {
 
     private let perPageTextField: TextField = {
         let textField = TextField()
-        textField.placeholder = "每頁呈現數量"
+        textField.attributedPlaceholder = NSAttributedString(
+            string: "每頁呈現數量", attributes: [.foregroundColor: UIColor.textGray]
+        )
+        textField.textColor = .textBlack
         textField.font = .systemFont(ofSize: 14)
         textField.keyboardType = .numberPad
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -40,7 +44,7 @@ class InputController: UIViewController {
         button.setTitle("搜尋", for: .normal)
         button.setTitleColor(.buttonTextWhite, for: .normal)
         button.setTitleColor(.buttonTextGray, for: .disabled)
-        button.titleLabel?.font = .systemFont(ofSize: 14)
+        button.titleLabel?.font = .systemFont(ofSize: 16)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -92,16 +96,16 @@ private extension InputController {
             keywordTextField.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
             keywordTextField.heightAnchor.constraint(equalToConstant: 30),
             keywordTextField.bottomAnchor.constraint(equalTo: perPageTextField.topAnchor,
-                                                     constant: -margin),
+                                                     constant: -LINE_SPACING),
             // per-page text field
             perPageTextField.widthAnchor.constraint(equalTo: keywordTextField.widthAnchor),
             perPageTextField.heightAnchor.constraint(equalTo: keywordTextField.heightAnchor),
             perPageTextField.centerXAnchor.constraint(equalTo: keywordTextField.centerXAnchor),
             perPageTextField.bottomAnchor.constraint(equalTo: searchButton.topAnchor,
-                                                     constant: -margin),
+                                                     constant: -LINE_SPACING),
             // search button
             searchButton.widthAnchor.constraint(equalTo: keywordTextField.widthAnchor),
-            searchButton.heightAnchor.constraint(equalTo: keywordTextField.heightAnchor),
+            searchButton.heightAnchor.constraint(equalToConstant: 50),
             searchButton.centerXAnchor.constraint(equalTo: keywordTextField.centerXAnchor),
             searchButton.bottomAnchor.constraint(equalTo: safeArea.centerYAnchor)
         ])
@@ -111,5 +115,6 @@ private extension InputController {
         perPageTextField.layer.borderColor = UIColor.borderGray.cgColor
         keywordTextField.layer.cornerRadius = 2
         perPageTextField.layer.cornerRadius = 2
+        searchButton.layer.cornerRadius = 10
     }
 }
