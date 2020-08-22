@@ -36,10 +36,7 @@ class PhotoCell: UICollectionViewCell {
 
 extension PhotoCell: Configurable {
     func configure(_ viewModel: ViewModel?) {
-        guard let viewModel = viewModel as? PhotoCellViewModel else {
-            assertionFailure("Expected to be PhotoCellViewModel.")
-            return
-        }
+        guard let viewModel = viewModel as? PhotoCellViewModel else { return }
         titleLabel.text = viewModel.titleText
         photoView.kf.setImage(with: viewModel.imageURL)
     }

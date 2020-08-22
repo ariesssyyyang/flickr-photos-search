@@ -29,6 +29,7 @@
 		7FDFF97524F129570086A21C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFF97424F129570086A21C /* Constant.swift */; };
 		7FDFF97724F131260086A21C /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFF97624F131260086A21C /* ApiManager.swift */; };
 		7FDFF97D24F159E30086A21C /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFF97C24F159E30086A21C /* Error.swift */; };
+		7FDFF97F24F1785B0086A21C /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFF97E24F1785B0086A21C /* LoadingCell.swift */; };
 		F0B6E8AFE0F34053C76C2B9F /* Pods_PhotoSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2208E9B8232AC12DDC6255C /* Pods_PhotoSearch.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		7FDFF97424F129570086A21C /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		7FDFF97624F131260086A21C /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		7FDFF97C24F159E30086A21C /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		7FDFF97E24F1785B0086A21C /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		9DEC8B308CC8092879BD28CF /* Pods-PhotoSearchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoSearchTests.release.xcconfig"; path = "Target Support Files/Pods-PhotoSearchTests/Pods-PhotoSearchTests.release.xcconfig"; sourceTree = "<group>"; };
 		B2208E9B8232AC12DDC6255C /* Pods_PhotoSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE5B86D93B90D97F22FC2AA5 /* Pods-PhotoSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoSearch.debug.xcconfig"; path = "Target Support Files/Pods-PhotoSearch/Pods-PhotoSearch.debug.xcconfig"; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				7FDFF95324F03CA50086A21C /* TextField.swift */,
 				7FDFF95D24F109EF0086A21C /* Button.swift */,
 				7FDFF96F24F11C970086A21C /* PhotoCell.swift */,
+				7FDFF97E24F1785B0086A21C /* LoadingCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				7FDFF96C24F11AFC0086A21C /* ViewModel.swift in Sources */,
 				7FDFF97D24F159E30086A21C /* Error.swift in Sources */,
 				7FDFF95C24F105310086A21C /* InputViewModel.swift in Sources */,
+				7FDFF97F24F1785B0086A21C /* LoadingCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,7 +15,7 @@ final class ApiManager {
 
     private init() { }
 
-    func searchPhotos(by keyword: String, perPage: String) -> Observable<Data> {
+    func searchPhotos(by keyword: String, perPage: String, page: Int) -> Observable<Data> {
         Observable.create { observer -> Disposable in
             var component = URLComponents(string: "https://www.flickr.com/services/rest/")
             component?.queryItems = [
@@ -24,7 +24,8 @@ final class ApiManager {
                 URLQueryItem(name: "format", value: "json"),
                 URLQueryItem(name: "nojsoncallback", value: "1"),
                 URLQueryItem(name: "text", value: keyword),
-                URLQueryItem(name: "per_page", value: perPage)
+                URLQueryItem(name: "per_page", value: perPage),
+                URLQueryItem(name: "page", value: "\(page)")
             ]
             guard let url = component?.url else {
                 observer.onError(FlickrError.invalidURL(str: component?.string))

@@ -50,15 +50,31 @@ class ResultListController: UIViewController {
 
 extension ResultListController: UICollectionViewDataSource {
 
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        viewModel.numberOfSection
+    }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.results.count
+        viewModel.numberOfItems(in: section)
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.reuseId, for: indexPath)
-        cell.bind(viewModel.cellViewModel(at: indexPath.item))
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: viewModel.cellReuseId(in: indexPath.section), for: indexPath
+        )
+        cell.bind(viewModel.cellViewModel(at: indexPath))
         return cell
+    }
+}
+
+extension ResultListController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
+        viewModel.loadMoreIfNeeded(at: indexPath.item)
+            .subscribe(onNext: { [weak self] in self?.reload() })
+            .disposed(by: bag)
     }
 }
 
@@ -68,10 +84,9 @@ extension ResultListController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = floor((collectionView.bounds.size.width - MARGIN * 3) / 2)
-        return CGSize(
-            width: width,
-            height: width + MARGIN + PhotoCell.LABEL_HEIGHT
-        )
+        return indexPath.section == 0
+            ? CGSize(width: width,height: width + MARGIN + PhotoCell.LABEL_HEIGHT) /* data    */
+            : CGSize(width: width * 2, height: 30)                                 /* loading */
     }
 }
 
@@ -107,6 +122,7 @@ private extension ResultListController {
             collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
         collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.reuseId)
+        collectionView.register(LoadingCell.self, forCellWithReuseIdentifier: LoadingCell.reuseId)
         collectionView.refreshControl = refreshControl
         collectionView.dataSource = self
         collectionView.delegate = self
