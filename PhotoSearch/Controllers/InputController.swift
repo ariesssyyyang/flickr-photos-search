@@ -66,7 +66,15 @@ private extension InputController {
     }
 
     func showResult(_ event: ControlEvent<Void>.Element) {
-        let controller = ResultListController()
+        guard
+            let keyword = keywordTextField.text,
+            let perPage = perPageTextField.text
+            else {
+                assertionFailure("Button's action should only triggered when there's input.")
+                return
+        }
+        let viewModel = ResultListViewModel(keyword: keyword, perPage: perPage)
+        let controller = ResultListController(viewModel: viewModel)
         navigationController?.pushViewController(controller, animated: true)
     }
 

@@ -10,6 +10,7 @@ import UIKit
 
 extension UIColor {
     static let textBlack            = UIColor(red:   5/255, green:   5/255, blue:   5/255, alpha: 1)
+    static let textWhite            = UIColor(red: 254/255, green: 254/255, blue: 254/255, alpha: 1)
     static let borderGray           = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
     static let buttonTextWhite      = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1)
     static let buttonTextGray       = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1)
