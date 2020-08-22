@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PhotoCell: UICollectionViewCell {
 
@@ -40,6 +41,7 @@ extension PhotoCell: Configurable {
             return
         }
         titleLabel.text = viewModel.titleText
+        photoView.kf.setImage(with: viewModel.imageURL)
     }
 }
 

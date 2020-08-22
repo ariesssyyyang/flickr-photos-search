@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import RxSwift
 
-struct ResultListViewModel {
+class ResultListViewModel {
 
     let keyword: String
     private let perPage: String
@@ -18,11 +19,14 @@ struct ResultListViewModel {
     init(keyword: String, perPage: String) {
         self.keyword = keyword
         self.perPage = perPage
-        self.results = [
-            Photo(id: "", farmId: "", serverId: "", secret: "", title: "hi"),
-            Photo(id: "", farmId: "", serverId: "", secret: "", title: "ya"),
-            Photo(id: "", farmId: "", serverId: "", secret: "", title: "boo")
-        ]
+        self.results = []
+    }
+
+    func getResult() -> Observable<Void> {
+        ApiManager.shared
+            .searchPhotos(by: keyword, perPage: perPage)
+            .map { try JSONDecoder().decode(PhotoList.self, from: $0) }
+            .map { [weak self] in self?.results = $0.photos }
     }
 
     func cellViewModel(at index: Int) -> ViewModel? {

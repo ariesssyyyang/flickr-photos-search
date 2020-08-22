@@ -8,10 +8,13 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 class ResultListController: UIViewController {
 
     private let viewModel: ResultListViewModel
+
+    private let bag = DisposeBag()
 
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -38,6 +41,7 @@ class ResultListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        getResult()
     }
 }
 
@@ -69,6 +73,13 @@ extension ResultListController: UICollectionViewDelegateFlowLayout {
 }
 
 private extension ResultListController {
+
+    func getResult() {
+        viewModel.getResult()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] in self?.collectionView.reloadData() })
+            .disposed(by: bag)
+    }
 
     func setupView() {
         view.backgroundColor = .yellow

@@ -14,6 +14,10 @@ struct PhotoCellViewModel: ViewModel {
 
     var titleText: String { model.title }
 
+    var imageURL: URL? {
+        URL(string: "https://farm\(model.farm).staticflickr.com/\(model.server)/\(model.id)_\(model.secret)_q.jpg")
+    }
+
     init(model: Photo) {
         self.model = model
     }
