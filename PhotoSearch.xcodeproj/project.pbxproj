@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,8 @@
 		7FDFF95024F039200086A21C /* InputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFF94F24F039200086A21C /* InputController.swift */; };
 		7FDFF95424F03CA50086A21C /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFF95324F03CA50086A21C /* TextField.swift */; };
 		7FDFF95724F03DCF0086A21C /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFF95624F03DCF0086A21C /* UIColor+Ext.swift */; };
+		7FDFF95C24F105310086A21C /* InputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFF95B24F105310086A21C /* InputViewModel.swift */; };
+		7FDFF95E24F109EF0086A21C /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFF95D24F109EF0086A21C /* Button.swift */; };
 		F0B6E8AFE0F34053C76C2B9F /* Pods_PhotoSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2208E9B8232AC12DDC6255C /* Pods_PhotoSearch.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +45,8 @@
 		7FDFF94F24F039200086A21C /* InputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputController.swift; sourceTree = "<group>"; };
 		7FDFF95324F03CA50086A21C /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		7FDFF95624F03DCF0086A21C /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		7FDFF95B24F105310086A21C /* InputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewModel.swift; sourceTree = "<group>"; };
+		7FDFF95D24F109EF0086A21C /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		9DEC8B308CC8092879BD28CF /* Pods-PhotoSearchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoSearchTests.release.xcconfig"; path = "Target Support Files/Pods-PhotoSearchTests/Pods-PhotoSearchTests.release.xcconfig"; sourceTree = "<group>"; };
 		B2208E9B8232AC12DDC6255C /* Pods_PhotoSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE5B86D93B90D97F22FC2AA5 /* Pods-PhotoSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoSearch.debug.xcconfig"; path = "Target Support Files/Pods-PhotoSearch/Pods-PhotoSearch.debug.xcconfig"; sourceTree = "<group>"; };
@@ -85,7 +89,6 @@
 				768E9D4EFD0830851B0B278D /* Pods-PhotoSearchTests.debug.xcconfig */,
 				9DEC8B308CC8092879BD28CF /* Pods-PhotoSearchTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -112,6 +115,7 @@
 		7F976BAF24F033E600AC923E /* PhotoSearch */ = {
 			isa = PBXGroup;
 			children = (
+				7FDFF95A24F105140086A21C /* ViewModels */,
 				7FDFF95524F03DBF0086A21C /* Extensions */,
 				7FDFF95224F03C9A0086A21C /* Views */,
 				7FDFF95124F039290086A21C /* Controllers */,
@@ -144,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				7FDFF95324F03CA50086A21C /* TextField.swift */,
+				7FDFF95D24F109EF0086A21C /* Button.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -154,6 +159,14 @@
 				7FDFF95624F03DCF0086A21C /* UIColor+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7FDFF95A24F105140086A21C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				7FDFF95B24F105310086A21C /* InputViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,9 +355,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FDFF95424F03CA50086A21C /* TextField.swift in Sources */,
+				7FDFF95E24F109EF0086A21C /* Button.swift in Sources */,
 				7FDFF95724F03DCF0086A21C /* UIColor+Ext.swift in Sources */,
 				7FDFF95024F039200086A21C /* InputController.swift in Sources */,
 				7F976BB124F033E600AC923E /* AppDelegate.swift in Sources */,
+				7FDFF95C24F105310086A21C /* InputViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

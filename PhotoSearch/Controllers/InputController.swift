@@ -7,10 +7,16 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class InputController: UIViewController {
 
+    private let viewModel = InputViewModel()
+
     private let margin: CGFloat = 8
+
+    private let bag = DisposeBag()
 
     private let keywordTextField: TextField = {
         let textField = TextField()
@@ -29,12 +35,12 @@ class InputController: UIViewController {
         return textField
     }()
 
-    private let searchButton: UIButton = {
-        let button = UIButton()
+    private let searchButton: Button = {
+        let button = Button()
         button.setTitle("搜尋", for: .normal)
         button.setTitleColor(.buttonTextWhite, for: .normal)
+        button.setTitleColor(.buttonTextGray, for: .disabled)
         button.titleLabel?.font = .systemFont(ofSize: 14)
-        button.backgroundColor = .enableButtonBgBlue
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -42,11 +48,19 @@ class InputController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        bindViewModel()
     }
 }
 
-
 private extension InputController {
+
+    func bindViewModel() {
+        viewModel.isValid(keyword: keywordTextField.rx.text,
+                          perPage: perPageTextField.rx.text)
+            .bind(to: searchButton.rx.isEnabled)
+            .disposed(by: bag)
+    }
+
     func setupView() {
         title = "搜尋輸入頁"
         view.backgroundColor = .white
