@@ -29,6 +29,8 @@ class ResultListController: UIViewController {
         return view
     }()
 
+    private let refreshControl = UIRefreshControl()
+
     init(viewModel: ResultListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -42,6 +44,7 @@ class ResultListController: UIViewController {
         super.viewDidLoad()
         setupView()
         getResult()
+        binding()
     }
 }
 
@@ -74,15 +77,26 @@ extension ResultListController: UICollectionViewDelegateFlowLayout {
 
 private extension ResultListController {
 
-    func getResult() {
-        viewModel.getResult()
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] in self?.collectionView.reloadData() })
+    func binding() {
+        refreshControl.rx.controlEvent(.valueChanged)
+            .subscribe(onNext: { [weak self] in self?.getResult() })
             .disposed(by: bag)
     }
 
+    func getResult() {
+        viewModel.getResult()
+            .subscribe(onNext: { [weak self] in self?.reload() })
+            .disposed(by: bag)
+    }
+
+    func reload() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.collectionView.reloadData()
+            self?.refreshControl.endRefreshing()
+        }
+    }
+
     func setupView() {
-        view.backgroundColor = .yellow
         title = "搜尋結果 " + viewModel.keyword
         view.addSubview(collectionView)
         let safeArea = view.safeAreaLayoutGuide
@@ -93,6 +107,7 @@ private extension ResultListController {
             collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
         collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.reuseId)
+        collectionView.refreshControl = refreshControl
         collectionView.dataSource = self
         collectionView.delegate = self
     }
