@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.makeKeyAndVisible()
         self.window = window
 
+        // CoreData
+        LocalStore.shared.configure()
+
         return true
     }
 
