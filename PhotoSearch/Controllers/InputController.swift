@@ -59,6 +59,15 @@ private extension InputController {
                           perPage: perPageTextField.rx.text)
             .bind(to: searchButton.rx.isEnabled)
             .disposed(by: bag)
+
+        searchButton.rx.tap
+            .subscribe(onNext: showResult)
+            .disposed(by: bag)
+    }
+
+    func showResult(_ event: ControlEvent<Void>.Element) {
+        let controller = ResultListController()
+        navigationController?.pushViewController(controller, animated: true)
     }
 
     func setupView() {
