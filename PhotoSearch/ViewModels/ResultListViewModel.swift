@@ -9,25 +9,29 @@
 import Foundation
 import RxSwift
 
-class ResultListViewModel {
+class ResultListViewModel: PhotoListViewModel {
 
-    let keyword: String
+    private let keyword: String
     private let perPage: String
     private var page: Int
+    private var totalPages: Int
     private var results: [Photo]
 
-    var numberOfSection: Int { 2 /* data + loading */ }
+    var titleText: String? { "搜尋結果 " + keyword }
+    private(set) var numberOfSection: Int = 2 /* data + loading */
 
     init(keyword: String, perPage: String) {
         self.keyword = keyword
         self.perPage = perPage
+        self.totalPages = 0
         self.results = []
         self.page = 0
     }
 
-    func getResult() -> Observable<Void> {
+    func getFeeds() -> Observable<Void> {
         results = []
         page = 0
+        numberOfSection = 2
         return requestData()
     }
 
@@ -44,16 +48,23 @@ class ResultListViewModel {
         section == 0 ? PhotoCell.reuseId : LoadingCell.reuseId
     }
 
-    func cellViewModel(at indexPath: IndexPath) -> ViewModel? {
+    func cellViewModel(at indexPath: IndexPath) -> PhotoCellViewModel? {
         guard indexPath.section == 0, indexPath.item < results.count else { return nil }
-        return PhotoCellViewModel(model: results[indexPath.item])
+        return PhotoCellViewModel(model: results[indexPath.item], delegate: self)
+    }
+}
+
+extension ResultListViewModel: PhotoCellDelegate {
+
+    func addToFavorite(feed: Feed) {
+        _ = LocalStore.shared.addToFavorite(feed: feed).subscribe(onNext: { _ in })
     }
 }
 
 private extension ResultListViewModel {
 
     func shouldLoadMore(at index: Int) -> Bool {
-        index == results.count - 1
+        index == results.count - 1 && page < totalPages
     }
 
     func requestData() -> Observable<Void> {
@@ -66,5 +77,7 @@ private extension ResultListViewModel {
     func configure(_ model: PhotoList) {
         self.results.append(contentsOf: model.photos)
         self.page = model.page
+        self.totalPages = model.pages
+        if page == totalPages { numberOfSection = 1 }
     }
 }

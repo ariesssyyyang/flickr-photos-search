@@ -10,15 +10,24 @@ import Foundation
 
 struct PhotoCellViewModel: ViewModel {
 
-    private let model: Photo
+    private let model: Feed
 
-    var titleText: String { model.title }
+    private weak var delegate: PhotoCellDelegate?
 
-    var imageURL: URL? {
-        URL(string: "https://farm\(model.farm).staticflickr.com/\(model.server)/\(model.id)_\(model.secret)_q.jpg")
+    let titleText: String
+
+    let imageURL: URL?
+
+    var shouldShowAddButton: Bool { model is Photo }
+
+    init(model: Feed, delegate: PhotoCellDelegate?) {
+        self.model = model
+        self.delegate = delegate
+        self.titleText = model.title
+        self.imageURL = URL(string: model.urlString)
     }
 
-    init(model: Photo) {
-        self.model = model
+    func addButtonDidTapped() {
+        delegate?.addToFavorite(feed: model)
     }
 }
