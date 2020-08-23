@@ -8,12 +8,16 @@
 
 import Foundation
 
-struct Photo: Decodable {
+struct Photo: Feed, Decodable {
     let id: String
     let farm: Int
     let server: String
     let secret: String
     let title: String
+
+    var urlString: String {
+        "https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret)_q.jpg"
+    }
 }
 
 struct PhotoList: Decodable {

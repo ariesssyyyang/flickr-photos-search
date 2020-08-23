@@ -69,6 +69,7 @@ extension ResultListController: UICollectionViewDataSource {
 }
 
 extension ResultListController: UICollectionViewDelegate {
+
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
@@ -99,7 +100,7 @@ private extension ResultListController {
     }
 
     func getResult() {
-        viewModel.getResult()
+        viewModel.getFeeds()
             .subscribe(onNext: { [weak self] in self?.reload() })
             .disposed(by: bag)
     }

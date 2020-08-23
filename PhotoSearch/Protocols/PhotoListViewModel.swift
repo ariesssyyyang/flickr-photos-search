@@ -12,7 +12,7 @@ import RxSwift
 protocol PhotoListViewModel: ViewModel {
     var titleText: String? { get }
     var numberOfSection: Int { get }
-    func getResult() -> Observable<Void>
+    func getFeeds() -> Observable<Void>
     func numberOfItems(in section: Int) -> Int
     func loadMoreIfNeeded(at index: Int) -> Observable<Void>
     func cellReuseId(in section: Int) -> String

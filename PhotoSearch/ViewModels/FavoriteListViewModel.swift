@@ -11,16 +11,23 @@ import RxSwift
 
 class FavoriteListViewModel: PhotoListViewModel {
 
+    private var favorites: [Favorite]
+
     var titleText: String? { "我的最愛" }
 
     var numberOfSection: Int { 1 }
 
-    func getResult() -> Observable<Void> {
-        return Observable.just(())
+    init() {
+        self.favorites = []
+    }
+
+    func getFeeds() -> Observable<Void> {
+        return LocalStore.shared.getFavoriteList()
+            .map { [weak self] in self?.favorites = $0 }
     }
 
     func numberOfItems(in section: Int) -> Int {
-        0
+        favorites.count
     }
 
     func loadMoreIfNeeded(at index: Int) -> Observable<Void> {
@@ -28,10 +35,11 @@ class FavoriteListViewModel: PhotoListViewModel {
     }
 
     func cellReuseId(in section: Int) -> String {
-        return ""
+        return PhotoCell.reuseId
     }
 
     func cellViewModel(at indexPath: IndexPath) -> PhotoCellViewModel? {
-        return nil
+        guard indexPath.item < favorites.count else { return nil }
+        return PhotoCellViewModel(model: favorites[indexPath.item], delegate: nil)
     }
 }

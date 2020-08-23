@@ -28,7 +28,7 @@ class ResultListViewModel: PhotoListViewModel {
         self.page = 0
     }
 
-    func getResult() -> Observable<Void> {
+    func getFeeds() -> Observable<Void> {
         results = []
         page = 0
         numberOfSection = 2
@@ -50,7 +50,14 @@ class ResultListViewModel: PhotoListViewModel {
 
     func cellViewModel(at indexPath: IndexPath) -> PhotoCellViewModel? {
         guard indexPath.section == 0, indexPath.item < results.count else { return nil }
-        return PhotoCellViewModel(model: results[indexPath.item])
+        return PhotoCellViewModel(model: results[indexPath.item], delegate: self)
+    }
+}
+
+extension ResultListViewModel: PhotoCellDelegate {
+
+    func addToFavorite(feed: Feed) {
+        _ = LocalStore.shared.addToFavorite(feed: feed).subscribe(onNext: { _ in })
     }
 }
 

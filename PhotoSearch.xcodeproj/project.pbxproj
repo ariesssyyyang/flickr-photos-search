@@ -35,6 +35,8 @@
 		7FDFF98624F1A7670086A21C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFF98524F1A7670086A21C /* TabBarController.swift */; };
 		7FDFF98A24F1B0210086A21C /* PhotoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFF98924F1B0210086A21C /* PhotoListViewModel.swift */; };
 		7FDFF98C24F1B12D0086A21C /* FavoriteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFF98B24F1B12D0086A21C /* FavoriteListViewModel.swift */; };
+		7FDFF99024F236E60086A21C /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFF98F24F236E50086A21C /* Favorite.swift */; };
+		7FDFF99224F2D5870086A21C /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFF99124F2D5870086A21C /* Feed.swift */; };
 		F0B6E8AFE0F34053C76C2B9F /* Pods_PhotoSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2208E9B8232AC12DDC6255C /* Pods_PhotoSearch.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +85,8 @@
 		7FDFF98524F1A7670086A21C /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7FDFF98924F1B0210086A21C /* PhotoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewModel.swift; sourceTree = "<group>"; };
 		7FDFF98B24F1B12D0086A21C /* FavoriteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListViewModel.swift; sourceTree = "<group>"; };
+		7FDFF98F24F236E50086A21C /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
+		7FDFF99124F2D5870086A21C /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		9DEC8B308CC8092879BD28CF /* Pods-PhotoSearchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoSearchTests.release.xcconfig"; path = "Target Support Files/Pods-PhotoSearchTests/Pods-PhotoSearchTests.release.xcconfig"; sourceTree = "<group>"; };
 		B2208E9B8232AC12DDC6255C /* Pods_PhotoSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE5B86D93B90D97F22FC2AA5 /* Pods-PhotoSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoSearch.debug.xcconfig"; path = "Target Support Files/Pods-PhotoSearch/Pods-PhotoSearch.debug.xcconfig"; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 			children = (
 				7FDFF96424F114D20086A21C /* Photo.swift */,
 				7FDFF97C24F159E30086A21C /* Error.swift */,
+				7FDFF98F24F236E50086A21C /* Favorite.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 				7FDFF96924F11AE40086A21C /* Configurable.swift */,
 				7FDFF96B24F11AFB0086A21C /* ViewModel.swift */,
 				7FDFF98924F1B0210086A21C /* PhotoListViewModel.swift */,
+				7FDFF99124F2D5870086A21C /* Feed.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -433,6 +439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FDFF97024F11C970086A21C /* PhotoCell.swift in Sources */,
+				7FDFF99224F2D5870086A21C /* Feed.swift in Sources */,
 				7FDFF95424F03CA50086A21C /* TextField.swift in Sources */,
 				7FDFF95E24F109EF0086A21C /* Button.swift in Sources */,
 				7FDFF97524F129570086A21C /* Constant.swift in Sources */,
@@ -452,6 +459,7 @@
 				7FDFF97224F1202F0086A21C /* PhotoCellViewModel.swift in Sources */,
 				7FDFF97724F131260086A21C /* ApiManager.swift in Sources */,
 				7FDFF96C24F11AFC0086A21C /* ViewModel.swift in Sources */,
+				7FDFF99024F236E60086A21C /* Favorite.swift in Sources */,
 				7FDFF97D24F159E30086A21C /* Error.swift in Sources */,
 				7FDFF98C24F1B12D0086A21C /* FavoriteListViewModel.swift in Sources */,
 				7FDFF95C24F105310086A21C /* InputViewModel.swift in Sources */,

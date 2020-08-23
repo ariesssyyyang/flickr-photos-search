@@ -11,3 +11,7 @@ import Foundation
 enum FlickrError: Error {
     case invalidURL(str: String?), networkError
 }
+
+enum LocalStoreError: Error {
+    case entityNotFound
+}
