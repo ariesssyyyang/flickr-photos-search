@@ -54,6 +54,10 @@ class InputController: UIViewController {
         setupView()
         bindViewModel()
     }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 }
 
 private extension InputController {
